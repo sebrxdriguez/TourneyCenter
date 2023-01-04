@@ -1,0 +1,50 @@
+.card {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    width: 500px;
+    background: white;
+    font-size: 15pt;
+    color: black;
+    text-align: left;
+    line-height: 1.5em;
+    z-index: 100;
+    border-radius: 20px;
+    box-shadow: 0px 0px 4px 2px rgb(82, 81, 81);
+}
+
+.text-center {
+    text-align: center;
+    font-size: 18pt;
+    font-family: Arial;
+    color: rgb(40,40,40);
+}
+.btn-block {
+    background: linear-gradient(to right, var(--primary-color1), var(--primary-color2));
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: none;
+    margin: auto;
+}
+.btn-block:hover {
+    background: var(--primary-color2)
+}
+.card a {
+    color:rgb(61, 170, 85);
+    display: block;
+    position: relative;
+}
+.card a:hover {
+    color:rgb(51, 139, 70);
+}
+.lead {
+    display: inline;
+    width: 100%;
+}
+.registerWrap #name {
+        margin: auto;
+}

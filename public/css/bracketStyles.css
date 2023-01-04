@@ -1,0 +1,156 @@
+
+body {
+    width: 100%;
+    min-width:100%;
+    background: rgb(238, 238, 238);;
+    --saveCursor: default;
+    --teamCursor: default;
+
+}
+.bracketHeader {
+    position: absolute;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    align-items: space-between;
+    top: 55px;
+    width: 100%;
+    list-style-type: none;
+    background: rgb(59, 59, 59);
+    color: white;
+    height: 25px;
+    text-align: center;
+    z-index: 1000;
+    justify-content: center;
+}
+.bracketHeader li {
+    text-align: center;
+    justify-content: center;
+    display: inline-flex;
+    font-size: 11pt;
+    width: 175px;
+    background: rgb(59, 59, 59);
+}
+.bracket {
+    position: absolute;
+    display: grid;
+    justify-content: center;
+    align-content: space-between;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    gap: 3% 1.2%;
+    top: 90px;
+    min-width: 80%;
+    width: 100%;
+    padding-top: .5%;
+    padding-bottom: .5%;
+}
+.inputs {
+    display: flex;
+    width: 160px;
+    height: 29px;
+    background: white;
+    font-family: Arial;
+    font-size: 11pt;
+    color: rgb(41, 41, 41);
+    border: grey 1px;
+    box-shadow: lightgrey 0px 0px 2px 2px;
+    align-items: center;
+}
+.inputsu {
+    display: flex;
+    width: 160px;
+    height: 29px;
+    font-family: Arial;
+    font-size: 11pt;
+    color: rgb(41, 41, 41);
+}
+.inputs:hover {
+    background: lightgray;
+}
+.matchup label .seed {
+    float: left;
+    margin-left: 10px;
+    font-family: Verdana;
+}
+.matchup label {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.matchup label .radios {
+    float: right;
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    margin-top: 4px;
+    cursor: pointer;
+}
+.champion label {
+    cursor: default;
+}
+.champion .radios {
+    display: none;
+}
+#x5 {
+    font-size: 16px;
+}
+#x5:hover {
+    background-color: white;
+}
+#finals {
+    width: 200px;
+    height: 60px;
+    position: absolute;
+    left: 45%;
+    top: 36%;
+}
+.inputs hr {
+    background-color: lightgrey;
+    width: 110px;
+    height: 0px;
+    text-align: center;
+}
+input[type='radio']:after {
+    width: 20px;
+    height: 20px;
+    border-radius: 15px;
+    top: 0px;
+    left: 2px;
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 1px solid grey;
+}
+
+input[type='radio']:checked:after {
+    background-color: #5ad6ff;
+    border: 1px solid #2593b8;
+}
+#save {
+    width: 75px;
+    height: 25px;
+    text-align: center;
+    justify-content: center;
+    margin-left: 25%;
+    margin-right: 25%;
+    font-family: Tahoma;
+    font-size: 13pt;
+    --save-bg: rgb(200, 200, 200);
+    background-color: var(--save-bg);
+    color: white;
+    border: none;
+    cursor: var(--saveCursor);
+}
+#save label {
+    width: 100%;
+    height: 100%;
+    cursor: var(--saveCursor);
+}
+#save:hover {
+    --save-hover-bg: rgb(200,200,200);
+    background-color: var(--save-hover-bg);
+}

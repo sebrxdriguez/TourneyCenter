@@ -1,0 +1,27 @@
+{
+  "name": "tourneybase",
+  "version": "1.0.0",
+  "description": "web app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\"",
+    "go": "nodemon app.js"
+  },
+  "author": "Ryan Hulke",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "ejs": "^3.1.6",
+    "express": "^4.18.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.3",
+    "jquery": "^3.6.0",
+    "mongodb": "^4.9.1",
+    "mongoose": "^5.13.15",
+    "nodemon": "^2.0.7",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7"
+  }
+}

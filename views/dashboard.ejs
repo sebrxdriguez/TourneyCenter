@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourney Base</title>
+    <link rel="stylesheet" type="text/css" href="/css/bracketStyles.css">
+</head>
+<%- contentFor('header') %>
+    <div class="banner">
+      <img src="/img/TourneyBaseLogo.png" alt="logo" class="logo">
+      <div class="title">Tourney Center </div>
+      <nav>
+          <div class="menu-wrap">
+              <input type="checkbox" class="toggler">
+              <div class="hamburger"><div></div></div>
+              <ul>
+                <li><a href="/">My Bracket</a></li>
+                <li><a href="/leaderboard">Leaderboard</a></li>
+                <li><a href="/groups">Groups</a></li>
+                <li><a href="/rules">How It Works</a></li>
+                <li><a href="/account">Edit Account Info</a></li>
+                <li><a href="/users/logout" id="logout">Logout</a></li>
+              </ul>
+            </div>
+          </nav>
+          <div id="name"><%= user.username %></div>
+    </div>
+<%- contentFor('body') %>
+<body>
+    <div class="bracketHeader">
+        <li>Round 1</li>
+        <li>Conference Semifinals</li>
+        <li>Conference Finals</li>
+        <li>Finals</li>
+        <li>Conference Finals</li>
+        <li>Conference Semifinals</li>
+        <li>Round 1</li>
+    </div>
+    <form action="/" method="POST">
+    <div class="bracket">
+        <div class="matchup">
+            <div class="r1">
+                <button type="button"class="inputs"id="w11"onclick="win('w11', 'w18', 'w21', 1)"><label><div class="seed">1</div><%= west[0] %><%- user.pickStyles[0] %></label></button>
+                <button type="button"class="inputs"id="w18"onclick="win('w18', 'w11', 'w21', 1)"><label><div class="seed">8</div><%= west[7] %><%- user.pickStyles[1] %></label></button>
+            </div>
+         </div>
+         <div></div>
+         <div></div>
+         <div></div>
+         <div></div>
+         <div></div>
+         <div class="matchup">
+            <button type="button"class="inputs"id="e11"onclick="win('e11', 'e18', 'e21', 1)"><label><div class="seed">1</div><%= east[0] %><%- user.pickStyles[2] %></label></button>
+            <button type="button"class="inputs"id="e18"onclick="win('e18', 'e11', 'e21', 1)"><label><div class="seed">8</div><%= east[7] %><%- user.pickStyles[3] %></label></button>
+        </div>
+         <div class="matchup"></div>
+         <div class="matchup">
+            <button type="button"class="inputs"id="w21"onclick="win('w21', 'w22', 'w31', 5)"><label><div class="seed"><%=user.picks.wSeeds[0]%></div><%- user.picks.west[0] %><%- user.pickStyles[4] %></label></button>
+            <button type="button"class="inputs"id="w22"onclick="win('w22', 'w21', 'w31', 5)"><label><div class="seed"><%=user.picks.wSeeds[1]%></div><%- user.picks.west[1] %><%- user.pickStyles[5] %></label></button>
+        </div>
+         <div></div>
+         <div></div>
+         <div></div>
+         <div class="matchup">
+            <button type="button"class="inputs"id="e21"onclick="win('e21', 'e22', 'e31', 5)"><label><div class="seed"><%=user.picks.eSeeds[0]%></div><%- user.picks.east[0] %><%- user.pickStyles[6] %></label></button>
+            <button type="button"class="inputs"id="e22"onclick="win('e22', 'e21', 'e31', 5)"><label><div class="seed"><%=user.picks.eSeeds[1]%></div><%- user.picks.east[1] %><%- user.pickStyles[7] %></label></button>
+        </div>
+         <div></div>
+         <div class="matchup">
+             <button type="button"class="inputs"id="w14"onclick="win('w14', 'w15', 'w22', 2)"><label><div class="seed">4</div><%= west[3] %><%- user.pickStyles[8] %></label></button>
+             <button type="button"class="inputs"id="w15"onclick="win('w15', 'w14', 'w22', 2)"><label><div class="seed">5</div><%= west[4] %><%- user.pickStyles[9] %></label></button>
+         </div>
+         <div></div>
+         <div></div>
+         <div></div>
+         <div></div>
+         <div></div>
+         <div class="matchup">
+            <button type="button"class="inputs"id="e14"onclick="win('e14', 'e15', 'e22', 2)"><label><div class="seed">4</div><%= east[3] %><%- user.pickStyles[10] %></label></button>
+            <button type="button"class="inputs"id="e15"onclick="win('e15', 'e14', 'e22', 2)"><label><div class="seed">5</div><%= east[4] %><%- user.pickStyles[11] %></label></button>
+        </div>
+         <div></div>
+         <div></div>
+         <div class="matchup">
+            <button type="button"class="inputs"id="w31"onclick="win('w31', 'w32', 'w4', 7)"><label><div class="seed"><%=user.picks.wSeeds[4]%></div><%- user.picks.west[4] %><%- user.pickStyles[12] %></label></button>
+            <button type="button"class="inputs"id="w32"onclick="win('w32', 'w31', 'w4', 7)"><label><div class="seed"><%=user.picks.wSeeds[5]%></div><%- user.picks.west[5] %><%- user.pickStyles[13] %></label></button>
+        </div>
+         <div class="matchup">
+            <button type="button"class="inputs"id="w4"onclick="win('w4', 'e4', 'x5', 8)"><label><div class="seed"><%=user.picks.wSeeds[6]%></div><%- user.picks.west[6] %><%- user.pickStyles[14] %></label></button>
+            <button type="button"class="inputs"id="e4"onclick="win('e4', 'w4', 'x5', 8)"><label><div class="seed"><%=user.picks.eSeeds[6]%></div><%- user.picks.east[6] %><%- user.pickStyles[15] %></label></button>
+        </div>
+        <div class="matchup">
+            <button type="button"class="inputs"id="e31"onclick="win('e31', 'e32', 'e4', 7)"><label><div class="seed"><%=user.picks.eSeeds[4]%></div><%- user.picks.east[4] %><%- user.pickStyles[16] %></label></button>
+            <button type="button"class="inputs"id="e32"onclick="win('e32', 'e31', 'e4', 7)"><label><div class="seed"><%=user.picks.eSeeds[5]%></div><%- user.picks.east[5] %><%- user.pickStyles[17] %></label></button>
+        </div>
+         <div></div>
+         <div></div>
+         <div class="matchup">
+            <button type="button"class="inputs"id="w13"onclick="win('w13', 'w16','w23', 3)"><label><div class="seed">3</div><%= west[2] %><%- user.pickStyles[18] %></label></button>
+            <button type="button"class="inputs"id="w16"onclick="win('w16', 'w13','w23', 3)"><label><div class="seed">6</div><%= west[5] %><%- user.pickStyles[19] %></label></button>
+        </div>
+        <div></div>
+        <div></div>
+        <div class="champion matchup">
+            Your Pick: 
+            <button type="button" class="inputs" id="x5"><label><%- user.picks.champ %></label></button>
+        </div>
+        <div></div>
+        <div></div>
+        <div class="matchup">
+            <button type="button"class="inputs"id="e13"onclick="win('e13', 'e16', 'e23', 3)"><label><div class="seed">3</div><%= east[2] %><%- user.pickStyles[20] %></label></button>
+            <button type="button"class="inputs"id="e16"onclick="win('e16', 'e13', 'e23', 3)"><label><div class="seed">6</div><%= east[5] %><%- user.pickStyles[21] %></label></button>
+        </div>
+        <div></div>
+         <div class="matchup">
+            <button type="button"class="inputs"id="w23"onclick="win('w23', 'w24', 'w32', 6)"><label><div class="seed"><%=user.picks.wSeeds[2]%></div><%- user.picks.west[2] %><%- user.pickStyles[22] %></label></button>
+            <button type="button"class="inputs"id="w24"onclick="win('w24', 'w23', 'w32', 6)"><label><div class="seed"><%=user.picks.wSeeds[3]%></div><%- user.picks.west[3] %><%- user.pickStyles[23] %></label></button>
+        </div>
+        <div></div>
+        <div>
+            <button type="button" class="inputs" id="save"onclick="postSave()"><label>Saved</label></button>
+        </div>
+        <div></div>
+        <div class="matchup">
+            <button type="button"class="inputs"id="e23"onclick="win('e23', 'e24', 'e32', 6)"><label><div class="seed"><%=user.picks.eSeeds[2]%></div><%- user.picks.east[2] %><%- user.pickStyles[24] %></label></button>
+            <button type="button"class="inputs"id="e24"onclick="win('e24', 'e23', 'e32', 6)"><label><div class="seed"><%=user.picks.eSeeds[3]%></div><%- user.picks.east[3] %><%- user.pickStyles[25] %></label></button>
+        </div>
+        <div></div>
+         <div class="matchup">
+             <button type="button"class="inputs"id="w12"onclick="win('w12', 'w17', 'w24', 4)"><label><div class="seed">2</div><%= west[1] %><%- user.pickStyles[26] %></label></button>
+             <button type="button"class="inputs"id="w17"onclick="win('w17', 'w12', 'w24', 4)"><label><div class="seed">7</div><%= west[6] %><%- user.pickStyles[27] %></label></button>
+        </div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div class="matchup">
+            <button type="button"class="inputs"id="e12"onclick="win('e12', 'e17', 'e24', 4)"><label><div class="seed">2</div><%- east[1] %><%- user.pickStyles[28] %></label></button>
+            <button type="button"class="inputs"id="e17"onclick="win('e17', 'e12', 'e24', 4)"><label><div class="seed">7</div><%- east[6] %><%- user.pickStyles[29] %></label></button>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

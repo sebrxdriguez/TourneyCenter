@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourney Base</title>
+    <link rel="stylesheet" type="text/css" href="/css/bracketStyles.css">
+</head>
+<%- contentFor('header') %>
+    <div class="banner">
+      <img src="/img/TourneyBaseLogo.png" alt="logo" class="logo">
+      <div class="title">Tourney Base </div>
+      <nav>
+          <div class="menu-wrap">
+              <input type="checkbox" class="toggler">
+              <div class="hamburger"><div></div></div>
+              <ul>
+                  <li><a href="/">My Bracket</a></li>
+                  <li><a href="/leaderboard">Leaderboard</a></li>
+                  <li><a href="/groups">Groups</a></li>
+                  <li><a href="/rules">How It Works</a></li>
+                  <li><a href="/account">Account</a></li>
+                  <li><a href="/users/logout" id="logout">Logout</a></li>
+              </ul>
+            </div>
+          </nav>
+          <div id="name"><%- user.name %></div>
+    </div>
+<%- contentFor('body') %>
+<body>
+    <div class="bracketHeader">
+        <li>Round 1(+<%= score.wr1%>)</li>
+        <li>Conference Semi-Finals(+<%= score.wr2%>)</li>
+        <li>Conference Finals(+<%= score.wr3%>)</li>
+        <li>Finals(+<%= score.finals%>)</li>
+        <li>Conference Finals(+<%= score.er3%>)</li>
+        <li>Conference Semi-Finals(+<%= score.er2%>)</li>
+        <li>Round 1(+<%= score.er1%>)</li>
+    </div>
+<div class="bracket">
+<%- backgrounds.w1 %> 
+<%- backgrounds.w2 %>
+<%- backgrounds.w3 %> 
+<%- backgrounds.w4 %>
+<%- backgrounds.w5 %> 
+<%- backgrounds.w6 %>
+<%- backgrounds.w7 %> 
+<%- backgrounds.e1 %>
+<%- backgrounds.e2 %> 
+<%- backgrounds.e3 %>
+<%- backgrounds.e4 %> 
+<%- backgrounds.e5 %>
+<%- backgrounds.e6 %> 
+<%- backgrounds.e7 %>
+<%- backgrounds.finals %>
+<%- backgrounds.champPick %> 
+
+
+    <div class="westR1">
+        <div class="matchup">
+           <button type="button"class="inputsu"id="w11"onclick="win('w11', 'w18', 'w21', true, 1)"><label>Jazz</label></button>
+           <button type="button"class="inputsu"id="w18"onclick="win('w18', 'w11', 'w21', true, 1)"><label>Warriors</label></button>
+        </div>
+        <div class="matchup">
+            <button type="button"class="inputsu"id="w14"onclick="win('w14', 'w15', 'w22', true, 2)"><label>Clippers</label></button>
+            <button type="button"class="inputsu"id="w15"onclick="win('w15', 'w14', 'w22', true, 2)"><label>Mavericks</label></button>
+        </div>
+        <div class="matchup">
+            <button type="button"class="inputsu"id="w13"onclick="win('w13', 'w16', 'w23', true, 3)"><label>Nuggets</label></button>
+            <button type="button"class="inputsu"id="w16"onclick="win('w16', 'w13','w23', true, 3)"><label>Trail Blazers</label></button>
+        </div>
+        <div class="matchup">
+            <button type="button"class="inputsu"id="w12"onclick="win('w12', 'w17', 'w24', true, 4)"><label>Suns</label></button>
+            <button type="button"class="inputsu"id="w17"onclick="win('w17', 'w12', 'w24', true, 4)"><label>Lakers</label></button>
+        </div>
+    </div>
+    <div class="westR2">
+        <div class="matchup">
+            <button type="button"class="inputsu"id="w21"onclick="win('w21', 'w22', 'w31', true, 5)"><label><%=user.picks.w1%></label></button>
+            <button type="button"class="inputsu"id="w22"onclick="win('w22', 'w21', 'w31', true, 5)"><label><%=user.picks.w2%></label></button>
+        </div>
+        <div class="matchup">
+            <button type="button"class="inputsu"id="w23"onclick="win('w23', 'w24', 'w32', true, 6)"><label><%=user.picks.w3%></label></button>
+            <button type="button"class="inputsu"id="w24"onclick="win('w24', 'w23', 'w32', true, 6)"><label><%=user.picks.w4%></label></button>
+        </div>
+    </div>
+    <div class="westR3">
+        <div class="matchup">
+            <button type="button"class="inputsu"id="w31"onclick="win('w31', 'w32', 'westF', true, 7)"><label><%=user.picks.w5%></label></button>
+            <button type="button"class="inputsu"id="w32"onclick="win('w32', 'w31', 'westF', true, 7)"><label><%=user.picks.w6%></label></button>
+        </div>
+    </div>
+    <div class="championship">
+        <div class="matchup">
+            <button type="button"class="inputsu"id="westF"onclick="win('westF', 'eastF', 'champ', true, 8)"><label><%=user.picks.w7%></label></button>
+            <button type="button"class="inputsu"id="eastF"onclick="win('eastF', 'westF', 'champ', true, 8)"><label><%=user.picks.e7%></label></button>
+        </div>
+    </div>
+    <div class="champion">
+        Your Pick: 
+        <button type="button" id="championPick"class="inputsu"><label><%=user.picks.champPick%></label></button>
+    </div>
+    <div class="bracketName">
+        <%- user.picks.bracketName %> - <%= score.total %> pts
+    </div>
+    <div class= "eastR1">
+        <div class="matchup">
+            <button type="button"class="inputsu"id="e11"onclick="win('e11', 'e18', 'e21', false, 1)"><label>76ers</label></button>
+            <button type="button"class="inputsu"id="e18"onclick="win('e18', 'e11', 'e21', false, 1)"><label>Pacers</label></button>
+        </div>
+        <div class="matchup">
+            <button type="button"class="inputsu"id="e14"onclick="win('e14', 'e15', 'e22', false, 2)"><label>Knicks</label></button>
+            <button type="button"class="inputsu"id="e15"onclick="win('e15', 'e14', 'e22', false, 2)"><label>Hawks</label></button>
+        </div>
+        <div class="matchup">
+            <button type="button"class="inputsu"id="e13"onclick="win('e13', 'e16', 'e23', false, 3)"><label>Bucks</label></button>
+            <button type="button"class="inputsu"id="e16"onclick="win('e16', 'e13', 'e23', false, 3)"><label>Heat</label></button>
+        </div>
+        <div class="matchup">
+            <button type="button"class="inputsu"id="e12"onclick="win('e12', 'e17', 'e24', false, 4)"><label>Nets</label></button>
+            <button type="button"class="inputsu"id="e17"onclick="win('e17', 'e12', 'e24', false, 4)"><label>Celtics</label></button>
+        </div>
+    </div>
+    <div class="eastR2">
+        <div class="matchup">
+            <button type="button"class="inputsu"id="e21"onclick="win('e21', 'e22', 'e31', false, 5)"><label><%=user.picks.e1%></label></button>
+            <button type="button"class="inputsu"id="e22"onclick="win('e22', 'e21', 'e31', false, 5)"><label><%=user.picks.e2%></label></button>
+        </div>
+        <div class="matchup">
+            <button type="button"class="inputsu"id="e23"onclick="win('e23', 'e24', 'e32', false, 6)"><label><%=user.picks.e3%></label></button>
+            <button type="button"class="inputsu"id="e24"onclick="win('e24', 'e23', 'e32', false, 6)"><label><%=user.picks.e4%></label></button>
+        </div>
+    </div>
+    <div class="eastR3">
+        <div class="matchup">
+            <button type="button"class="inputsu"id="e31"onclick="win('e31', 'e32', 'eastF', false, 7)"><label><%=user.picks.e5%></label></button>
+            <button type="button"class="inputsu"id="e32"onclick="win('e32', 'e31', 'eastF', false, 7)"><label><%=user.picks.e6%></label></button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

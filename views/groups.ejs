@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourney Base</title>
+    <link rel="stylesheet" type="text/css" href="/css/bracketStyles.css">
+</head>
+<%- contentFor('header') %>
+    <div class="banner">
+      <img src="/img/TourneyBaseLogo.png" alt="logo" class="logo">
+      <div class="title">Tourney Center </div>
+      <nav>
+          <div class="menu-wrap">
+              <input type="checkbox" class="toggler">
+              <div class="hamburger"><div></div></div>
+              <ul>
+                <li><a href="/">My Bracket</a></li>
+                <li><a href="/leaderboard">Leaderboard</a></li>
+                <li><a href="/groups">Groups</a></li>
+                <li><a href="/rules">How It Works</a></li>
+                <li><a href="/account">Edit Account Info</a></li>
+                <li><a href="/users/logout" id="logout">Logout</a></li>
+              </ul>
+            </div>
+          </nav>
+          <div id="name"><%- user.username %></div>
+    </div>
+<%- contentFor('body') %>
+<body>
+    <div class="groups">
+        Coming Soon...
+    </div>
+</body>
+</html>

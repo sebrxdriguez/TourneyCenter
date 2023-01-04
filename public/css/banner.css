@@ -1,0 +1,197 @@
+:root {
+    --primary-color1: rgb(111, 207, 224);
+    --primary-color2:  rgb(63, 164, 182);
+    --secondary-color: rgb(41, 41, 41);
+    --secondary-color2: lightgrey;
+}
+* {
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+.logo {
+    position: absolute;
+    left: 5px;
+    top: 10px;
+    width: 40px;
+    height: 40px;
+    padding-left: 0;
+    margin: 0;
+    padding-bottom: 4px;
+}
+.title {
+    top: 12px;
+    font-size: 25px;
+    position: absolute;
+    left: 60px;
+}
+img {
+   width: 100%;
+}
+#name {
+    float: right;
+    margin-right: 120px;
+    margin-top: 2px;
+    font-family:Tahoma;
+}
+.banner {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 55px;
+    background: linear-gradient(to right, var(--primary-color1), var(--primary-color2));
+    font-family:arial;
+    font-size : 16px;
+    text-align: left;
+    padding-top: 15px;
+    color: white;
+    border-bottom:2px rgb(41, 41, 41);
+}
+.banner nav {
+float: right;
+margin-right: 10px;
+text-decoration: none;
+list-style-type: none;
+}
+.banner #menuButt {
+    background: none;
+    border: none;
+    float: right;
+    margin-right: 10px;
+    margin-top: -5px;
+    top: 0px;
+    width: 30px;
+    height: 30px;
+}
+
+/* MENU STYLES */
+.menu-wrap {
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    z-index: 1;
+  }
+  
+  .menu-wrap .toggler {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    z-index: 2;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+  }
+  
+  .menu-wrap .hamburger {
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    z-index: 1;
+    width: 55px;
+    height: 55px;
+    padding: 10px;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Hamburger Line */
+  .menu-wrap .hamburger > div {
+    position: relative;
+    flex: none;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+  }
+  
+  /* Hamburger Lines - Top & Bottom */
+  .menu-wrap .hamburger > div::before,
+  .menu-wrap .hamburger > div::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: -10px;
+    width: 100%;
+    height: 2px;
+    background: inherit;
+  }
+  
+  /* Moves Line Down */
+  .menu-wrap .hamburger > div::after {
+    top: 10px;
+  }
+  
+  /* Toggler Animation */
+  .menu-wrap .toggler:checked + .hamburger > div {
+    transform: rotate(135deg);
+  }
+  
+  /* Turns Lines Into X */
+  .menu-wrap .toggler:checked + .hamburger > div:before,
+  .menu-wrap .toggler:checked + .hamburger > div:after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+  
+  /* Rotate On Hover When Checked */
+  .menu-wrap .toggler:checked:hover + .hamburger > div {
+    transform: rotate(225deg);
+  }
+  
+  /* Show Menu */
+  .menu-wrap .toggler:checked ~ ul {
+    transform: scale(1);
+    transition-duration: var(--menu-speed);
+    display: block;
+    list-style-type: none;
+    margin-top: 55px;
+    margin-right: 10px;
+    width: 200px;
+    background: rgb(50, 50, 50);
+    border-radius: 0px 0px 8px 8px;
+    box-shadow: lightgrey 0px 3px 2px 1px;
+    text-align: center;
+    line-height: 200%;
+  }
+  .menu-wrap .toggler:checked ~ .banner a {
+    text-decoration: none;
+    padding: 50px 50px;
+}
+.menu-wrap .toggler:checked ~ li, a {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.banner ul {
+    display: none;
+    line-height: 200%;
+}
+
+.banner a {
+    color: white;
+    text-decoration: none;
+}
+.banner a:hover {
+    background: rgb(41, 41, 41);
+}
+
+.background {
+    position: absolute;
+    top:0;
+    left: 0;
+    background: var(white);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+#logout:hover {
+  border-radius: 0px 0px 8px 8px;
+}
