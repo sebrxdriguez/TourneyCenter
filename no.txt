@@ -1,7 +1,0 @@
-bond pricing
-
-Par Value = C
-
-bond prices and yields are inversely related 
-because the payout amount is constant
-
