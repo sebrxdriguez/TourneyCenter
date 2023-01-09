@@ -5,11 +5,12 @@ const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 // Load User model
 const User = require('../models/User');
 const playoffResults = require('../models/playoffResults');
-const getScore = require('../config/getScore');
-const getPlacement = require('../config/getPlacement');
+const getScore = require('../dataFunctions/getScore');
+const getPlacement = require('../dataFunctions/getPlacement');
 const playoffsStarted = (playoffResults.w1 != "")
-const getTeams = require('../config/getTeams');
-const checkTeamNames = require('../config/checkData')
+const getTeams = require('../dataFunctions/getTeams');
+const checkTeamNames = require('../dataFunctions/checkData')
+const leaderboard = require('../models/leaderboard')
 const update = async (req) => {
   await User.updateOne({username: req.user.username}, {picks: req.body.picks, pickStyles: req.body.pickStyles})
 }
@@ -25,13 +26,13 @@ function renderBracket(req, res, teams) {    // gets passed into getTeams functi
 }
 router.get('/', ensureAuthenticated, (req, res) =>{
   if (playoffsStarted){
-    var score = getScore(playoffs, req.user.picks);
+    var score = getScore(playoffResults, req.user.picks);
     var placement = getPlacement(score.scores.total)
     saveScore(req, score)
     
     res.render('setBracket.ejs',{
       user: req.user,
-      bracket: playoffs,
+      bracket: playoffResults,
       score: score.scores,
       backgrounds: score.background
     })
@@ -55,6 +56,7 @@ router.get('/rules', ensureAuthenticated, (req, res) => {
 router.get('/leaderboard', ensureAuthenticated, (req, res) => {
   res.render('leaderboard.ejs',{
     user: req.user,
+    leaderboard: leaderboard()
   })
 })
 router.get('/groups', ensureAuthenticated, (req, res) => {

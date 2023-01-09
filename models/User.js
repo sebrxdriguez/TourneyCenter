@@ -26,7 +26,16 @@ const UserSchema = new mongoose.Schema({
   },
   scores: {
     type: Object, 
-    required: false
+    default: {   
+      wr1: 0,
+      wr2: 0,
+      wr3: 0, 
+      er1: 0,
+      er2: 0,
+      er3: 0,
+      finals: 0,
+      total: 0
+    }
   },
   pickStyles: {
     type: Array,

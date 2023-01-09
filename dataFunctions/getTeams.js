@@ -1,5 +1,5 @@
 const {MongoClient} = require('mongodb');
-const uri = require('./keys').mongoURI;
+const uri = require('../config/keys').mongoURI;
 
 module.exports = 
     async function (req, res, renderBracket) {
