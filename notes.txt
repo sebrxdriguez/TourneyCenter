@@ -1,0 +1,5 @@
+- might add a "create bracket" button on landing page to make it more intuitive as to what the website's for
+
+- do leaderboard front-end
+
+- maybe do groups
