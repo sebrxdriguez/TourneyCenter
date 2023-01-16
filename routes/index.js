@@ -10,7 +10,6 @@ const getPlacement = require('../dataFunctions/getPlacement');
 const playoffsStarted = (playoffResults.w1 != "")
 const getTeams = require('../dataFunctions/getTeams');
 const checkTeamNames = require('../dataFunctions/checkData')
-const leaderboard = require('../models/leaderboard')
 const update = async (req) => {
   await User.updateOne({username: req.user.username}, {picks: req.body.picks, pickStyles: req.body.pickStyles})
 }
@@ -29,7 +28,6 @@ router.get('/', ensureAuthenticated, (req, res) =>{
     var score = getScore(playoffResults, req.user.picks);
     var placement = getPlacement(score.scores.total)
     saveScore(req, score)
-    
     res.render('setBracket.ejs',{
       user: req.user,
       bracket: playoffResults,
@@ -54,9 +52,22 @@ router.get('/rules', ensureAuthenticated, (req, res) => {
   })
 })
 router.get('/leaderboard', ensureAuthenticated, (req, res) => {
-  res.render('leaderboard.ejs',{
-    user: req.user,
-    leaderboard: leaderboard()
+  // gets all user data and sorts it, adds html for each
+  User.find({}).then(users => {
+      var leaderboard = [];
+      for (var i = 0; i < users.length; i++) {
+        leaderboard.push(users[i]);
+      }
+      leaderboard.sort((a, b) => b.scores.total - a.scores.total)
+      var frontEnd = "";
+      for (var i = 0; i < leaderboard.length; i++) {
+        frontEnd += "<li>" + leaderboard[i].username + " - "
+        + leaderboard[i].scores.total + "</li>";
+      }
+      res.render('leaderboard.ejs',{
+        user: req.user,
+        leaderboard: frontEnd
+      })
   })
 })
 router.get('/groups', ensureAuthenticated, (req, res) => {
