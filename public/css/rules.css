@@ -1,10 +1,11 @@
+.rulesHolder {
+    display: grid;
+    place-items: center;
+}
 .rulesList {
     width: 70%;
     height: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin-top: 10%;
     color: black;
     background-color: white;
     border-radius: 20px;

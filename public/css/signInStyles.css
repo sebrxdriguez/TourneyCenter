@@ -1,9 +1,9 @@
+.signInHolder {
+    display: grid;
+    place-items: center;
+}
 .card {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin-top: 5%;
     height: auto;
     width: 500px;
     background: white;
@@ -36,7 +36,6 @@
 .card a {
     color:rgb(61, 170, 85);
     display: block;
-    position: relative;
 }
 .card a:hover {
     color:rgb(51, 139, 70);
@@ -47,4 +46,9 @@
 }
 .registerWrap #name {
         margin: auto;
+}
+@media screen and (max-width: 1250px) {
+    .card {
+        width: 250px;
+    }
 }
