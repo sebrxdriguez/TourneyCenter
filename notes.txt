@@ -1,4 +1,4 @@
-- might add a "create bracket" button on landing page to make it more intuitive as to what the website's for
+- might add a "create bracket" button on landing page to make it a little more intuitive as to what's going on
 
 - do leaderboard front-end
 
