@@ -22,14 +22,15 @@ router.post('/register', (req, res) => {
   if (username.search(/[\'\"\[\]\@\s\?\/\$\%\*\(\)]/) > -1){
     errors.push({msg: 'Username contains prohibited characters'})
   }
-  const file = fs.readFileSync("./bannedWords.txt", "utf-8")
-  const list = file.split(/\r?\n/)
-  for (var i = 0; i < list.length; i++){
-    if (username.search(list[i]) > -1){
-      errors.push({msg: 'Username contains explicit language'})
-      break;
+  /* const file = fs.readFileSync("./bannedWords.txt", "utf-8")
+   const list = file.split(/\r?\n/)
+   for (var i = 0; i < list.length; i++){
+     if (username.search(list[i]) > -1){
+       errors.push({msg: 'Username contains explicit language'})
+       break;
     }
   }
+  */
   if (password != password2) {
     errors.push({ msg: 'Passwords do not match' });
   }
